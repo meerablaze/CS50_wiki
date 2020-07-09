@@ -23,7 +23,7 @@ class Edit(forms.Form):
     textarea = forms.CharField(widget=forms.Textarea(), label='')
 
 def index(request):
-     entries = util.list_entries()
+    entries = util.list_entries()
     searched = []
     if request.method == "POST":
         form = Search(request.POST)
@@ -74,7 +74,7 @@ def create(request):
 
 
 def edit(request, title):
-     if request.method == 'GET':
+    if request.method == 'GET':
         page = util.get_entry(title)
         return render(request, "encyclopedia/edit.html", {"form": Search(), "edit":Edit(initial={'textarea': page}), 'title':title})
     else:
