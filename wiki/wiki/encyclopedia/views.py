@@ -89,9 +89,12 @@ def edit(request, title):
 def randomPage(request):
     if request.method == 'GET':
         entries = util.list_entries()
-        num = random.randint(0, len(entries) - 1)
-        page_random = entries[num]
-        page = util.get_entry(page_random)
-        page_converted = markdowner.convert(page)
-
-        return render(request, "encyclopedia/entry.html", {"form": Search(), "page": page_converted, "title": page_random})
+        num = random.randint(0, len(entries) -1)
+        random_p = entries[num]
+        page = util.get_entry(random_p)
+        convert_page = markdown2.markdown(page)
+        return render(request, 'encyclopedia/entry.html', {
+        "form":Search(),
+        "title": random_p,
+        "page": convert_page
+        })
