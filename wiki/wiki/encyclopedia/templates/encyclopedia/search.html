@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block body %}
-    <h1>You searched for: {{query}}</h1>
-    <h3>That entry doesn't exist. Did you mean?...</h3>
-    <ul>
-        {% for entry in entries %}
-            <li><a href="/wiki/{{entry}}">{{entry}}</a></li>
-        {% endfor %}
-    </ul>
+    {% for item in searched %}
+        <h2 class="display-4">Found pages:</h2>
+        <hr>
+        <li><a href=/wiki/{{item}}>{{ item }}</a></li>
+        {% empty %}
+            <h3>No item</h3>
+    {% endfor %}
 {% endblock %}
